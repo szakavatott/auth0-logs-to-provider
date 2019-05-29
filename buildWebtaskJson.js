@@ -5,7 +5,7 @@ const yargs = require('yargs');
 const argv = yargs
   .option('provider', {
     alias: 'p',
-    default: null
+    default: 'splunk'
   })
   .argv;
 
