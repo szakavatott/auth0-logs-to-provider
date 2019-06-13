@@ -2,6 +2,7 @@ const SplunkLogger = require('splunk-logging').Logger;
 
 const config = require('../config');
 const logger = require('../logger');
+const _ = require('lodash');
 
 module.exports = () => {
   const Logger = new SplunkLogger({
@@ -27,6 +28,9 @@ module.exports = () => {
     }
 
     logs.forEach(function(entry) {
+
+    entry = _.omit(entry, config('SPLUNK_DISABLED_ENTRIES'));
+
       // The default time format in Splunk is epoch time format, in the format <sec>.<ms>
       Logger.send({ message: entry, metadata: {time: new Date(entry.date).getTime()/1000} });
     });

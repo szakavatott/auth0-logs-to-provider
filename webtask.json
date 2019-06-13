@@ -473,6 +473,21 @@
       "description": "HTTP Collector Path (Endpoint)",
       "required": false,
       "default": "/services/collector/event/1.0"
+    },
+    "SPLUNK_DISABLED_ENTRIES": {
+      "description": "These entries will not be forwarded to Splunk",
+      "type": "select",
+      "allowMultiple": true,
+      "options": [
+        {
+          "value": "user_name",
+          "text": "user_name"
+        },
+        {
+          "value": "ip",
+          "text": "ip"
+        }
+      ]
     }
   },
   "title": "ECP Auth0 Logs to Splunk",
